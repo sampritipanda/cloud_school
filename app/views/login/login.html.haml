@@ -1,0 +1,8 @@
+%h2 Welcome to the School on Cloud Nine
+ 
+= form_tag login_path, :method => :post do
+
+  = label :login, :test, 'Enter a number'
+  = text_field :login, :test
+  
+  = submit_tag 'Login'
