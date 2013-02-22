@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CloudSchool</title>
+  <title>Cloud School</title>
+  <!--[if lt IE 9]>
+  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="texxt/javascript""></script>
+  <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
 
-<%= yield %>
+<div class="container-fluid">
+	<% if user_signed_in? %>
+	  Signed in as <%= current_user.email %>. Not You?
+	  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete%> 
+	<% end %>
+	
+	<% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, :class => "flash #{name}" %>
+	<% end %>
+
+	<!--<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>-->
+	
+	<%= yield %>
+</div>
 
 </body>
 </html>
