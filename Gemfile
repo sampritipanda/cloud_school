@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 gem 'haml'
 
 # Bundle edge Rails instead:
@@ -28,6 +28,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
+  
+  gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
+                                   :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
 end
 
 gem 'jquery-rails'
