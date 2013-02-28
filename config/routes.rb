@@ -5,7 +5,7 @@ CloudSchool::Application.routes.draw do
     get "", :to =>  "devise/sessions#new"
   end
   
-  match "/home" => "static_pages#home"
+  match "/home" => "home#index"
   
   # root :to => 'home#index'
   # The priority is based upon order of creation:
