@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def after_sign_in_path_for(resource)
-    '/home'
+    @site = current_user.site
+    
+    if @site
+      site_path(@site)
+    else
+      sites_join_path
+    end
   end
 end

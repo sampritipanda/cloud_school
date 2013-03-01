@@ -5,13 +5,11 @@ CloudSchool::Application.routes.draw do
     get "", :to =>  "devise/sessions#new"
   end
   
-  match "/home" => "home#index"
+  match "/sites/join" => "sites#join"
   
-  resource :site #do
+  resources :sites #do
 #    resources :homeworks
 #  end
-
-  match "/sites/join" => "sites#join"
   
   # root :to => 'home#index'
   # The priority is based upon order of creation:
