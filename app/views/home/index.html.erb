@@ -1,1 +1,15 @@
-<center><h1>Under Construction</h1></center>
+<div id="content">
+	<center>
+		<%= form_for(:user, :url => {:controller => 'sites', :action => 'join'}) do |f| %>
+			<fieldset>
+				<legend>Join a class</legend>
+				
+				<%= f.label :class_code %>
+		  		<%= f.text_field :code, :autofocus => true, :placeholder => "Class Code" %><br />
+				
+				<%= f.submit "Join", :class => "btn" %>
+			</fieldset>
+		<% end %>
+		<!--Add Create a Site option for final project-->
+	</center>
+</div>

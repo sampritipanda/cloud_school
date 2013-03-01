@@ -13,6 +13,13 @@
  *= require bootstrap-wysihtml5
  */
 
+body { 
+	background-image:url('notebook_paper.jpg');
+	background-repeat:no-repeat;
+	background-position:center down;
+	background-attachment:scroll;
+}
+
 .flash {
 	text-align: center;
 	padding: .3em .4em;
@@ -25,6 +32,7 @@
 .flash.error, .flash.alert {
 	border: thin solid #8b0000;
 	background: #ffc0cb;
+	color: #000000;
 }
 
 .flash.notice, .flash.info {
@@ -35,4 +43,13 @@
 .flash.warning {
 	border: thin solid #b8860b;
 	background: #ff0;
+}
+
+#content {
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    margin: -100px 0 0 -200px;
+    top: 50%;
+    left: 50%;
 }

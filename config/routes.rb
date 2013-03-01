@@ -7,6 +7,12 @@ CloudSchool::Application.routes.draw do
   
   match "/home" => "home#index"
   
+  resource :site #do
+#    resources :homeworks
+#  end
+
+  match "/sites/join" => "sites#join"
+  
   # root :to => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
