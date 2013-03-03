@@ -43,6 +43,9 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 # To use Devise for Authentication
 gem 'devise'
 
+# To use Turbolinks
+gem 'turbolinks'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

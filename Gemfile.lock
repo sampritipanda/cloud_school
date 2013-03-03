@@ -136,6 +136,8 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (1.0.0)
+      coffee-rails
     twitter-bootstrap-rails (2.2.4)
       actionpack (>= 3.1)
       execjs
@@ -163,5 +165,6 @@ DEPENDENCIES
   ruby-debug19
   sass-rails (~> 3.2.3)
   therubyracer
+  turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

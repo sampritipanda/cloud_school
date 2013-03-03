@@ -13,13 +13,6 @@
  *= require bootstrap-wysihtml5
  */
 
-body { 
-	background-image:url('notebook_paper.jpg');
-	background-repeat:no-repeat;
-	background-position:center down;
-	background-attachment:scroll;
-}
-
 .flash {
 	text-align: center;
 	padding: .3em .4em;
@@ -52,4 +45,13 @@ body {
     margin: -100px 0 0 -200px;
     top: 50%;
     left: 50%;
+}
+
+#site-content {
+    position: relative;
+    left: 202px;
+    top: 10px;
+    width: 915px;
+    background-color:#E9ECCF;
+    background-origin:content-box;
 }
