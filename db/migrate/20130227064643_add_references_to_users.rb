@@ -6,6 +6,6 @@ class AddReferencesToUsers < ActiveRecord::Migration
   end
  
  def down
-   remove_column :users, :sites_id
+   remove_column :users, :site_id
  end
 end

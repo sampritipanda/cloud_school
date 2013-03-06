@@ -1,0 +1,20 @@
+<div id="content">
+	<center>
+		<%= form_for(@site, :url => {:action => 'create'}) do |f| %>
+			<fieldset>
+				<legend>Create a class</legend>
+				
+				<!--[if lt IE 10]><%= f.label :class_name %><![endif]-->
+		  		<%= f.text_field :name, :autofocus => true, :placeholder => "Class Name" %><br />
+		  		
+		  		<!--[if lt IE 10]><%= f.label :class_code %><![endif]-->
+		  		<%= f.text_field :code, :placeholder => "Class Code" %><br />
+				
+				<!--[if lt IE 10]><%= f.label :class_url %><![endif]-->
+		  		<%= f.text_field :url, :placeholder => "Class Site URL" %><br />
+		  		
+				<%= f.submit "Create", :class => "btn" %>
+			</fieldset>
+		<% end %>
+	</center>
+</div>

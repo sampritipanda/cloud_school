@@ -1,0 +1,17 @@
+<script>
+	$(function() {
+		$("#datepicker").datepicker({
+			dateFormat: "dd/mm/yy",
+			onSelect: function(dateText, inst) {
+				document.forms["classwork_get"].submit();
+			}
+		});
+	});
+</script>
+
+
+<%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do %>
+	Date: <%= text_field_tag "datepicker" %>
+<% end %>
+
+<textarea id="classwork" style="width: 650px; height: 140px;" readonly=""><%= @classwork %></textarea>

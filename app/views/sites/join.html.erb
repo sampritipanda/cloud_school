@@ -1,15 +1,16 @@
 <div id="content">
 	<center>
-		<%= form_for(:user, :url => {:controller => 'sites', :action => 'join'}) do |f| %>
+		<%= form_for(:site, :url => {:controller => 'sites', :action => 'join'}) do |f| %>
 			<fieldset>
 				<legend>Join a class</legend>
 				
-				<%= f.label :class_code %>
+				<!--[if lt IE 10]><%= f.label :class_code %><![endif]-->
 		  		<%= f.text_field :code, :autofocus => true, :placeholder => "Class Code" %><br />
 				
 				<%= f.submit "Join", :class => "btn" %>
 			</fieldset>
 		<% end %>
-		<!--Add Create a Site option for final project-->
+		Or<br />
+		<a href="new">Create a Site</a>
 	</center>
 </div>

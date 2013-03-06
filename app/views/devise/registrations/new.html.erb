@@ -1,27 +1,31 @@
-<h2>Sign up</h2>
+<div id="content"><center>
+	<legend><h3>Sign up</h3></legend>
+	
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <%= devise_error_messages! %>
+	  
+	  <fieldset>
+		  <div><!--[if lt IE 10]><%= f.label :name %><![endif]-->
+		  <%= f.text_field :name, :autofocus => true, :placeholder => "Name" %></div>
+		  
+		  <div><!--[if lt IE 10]><%= f.label :email %><![endif]-->
+		  <%= f.email_field :email, :placeholder => "Email" %></div>
+		  
+		  <div><!--[if lt IE 10]><%= f.label :username %><![endif]-->
+		  <%= f.text_field :username, :placeholder => "Username" %></div>
+		
+		  <div><!--[if lt IE 10]><%= f.label :password %><![endif]-->
+		  <%= f.password_field :password, :placeholder => "Password" %></div>
+		
+		  <div><!--[if lt IE 10]><%= f.label :password_confirmation %><![endif]-->
+		  <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %></div>
+		  
+		  <div><%= f.label :birthday %>
+		  <%= f.date_select(:birthday, :start_year => 1940) %></div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :name %></div><br />
-  <%= f.text_field :name, :autofocus => true %>
-  
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-  
-  <div><%= f.label :username %></div><br />
-  <%= f.text_field :username %>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-  
-  <div><%= f.label :birthday %></div><br />
-  <%= f.date_select(:birthday, :start_year => 1940) %>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+		  <div><%= f.submit "Sign up", :class => "btn" %></div>
+	  </fieldset>
+	<% end %>
+	
+	<%= render "devise/shared/links" %>
+</center></div>

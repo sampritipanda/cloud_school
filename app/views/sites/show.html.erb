@@ -1,19 +1,11 @@
 <table id="site-content"><tr><td>
-	<script>
-		$(function() {
-			$("#datepicker").datepicker({
-				dateFormat: "dd/mm/yy"
-				onSelect: function(dateText, inst) {
-			        var date = $(this).val();
-			        var time = $('#time').val();
-			        alert('on select triggered');
-			        $("#start").val(date + time.toString(' HH:mm').toString());
-    			}
-			});
-		});
-	</script>
-		
-	<p>Date: <input type="text" id="datepicker" /></p>
-	
-	<%= render "word_of_the_day" %>
+	<div class="row">
+	    <div class="span2">
+	    	<%= render "sidebar" %>
+	    </div>
+	    <div class="span7">
+	    	<%= render "calender" %>	
+			<%= render "word_of_the_day" %>
+	    </div>
+    </div>
 </td></tr></table>
