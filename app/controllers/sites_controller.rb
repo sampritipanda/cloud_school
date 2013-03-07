@@ -6,6 +6,9 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(params[:site])
     if @site.save
+      @site.users << current_user
+      
+      # Useless Start
       prms = {:date => Time.now.to_date}
       prms[:content] = "Maths - Chapter 12 Exercise 13\nEnglish - Literature Reader - Caesar - Page 3 and 4\nPhysics - Sound - Exercises."
       
@@ -13,6 +16,15 @@ class SitesController < ApplicationController
       @classwork.save
       
       @site.classworks << @classwork
+      
+      prms = {:date => Time.now.to_date.yesterday.yesterday}
+      prms[:content] = "Maths - Chapter 12 Exercise 13\n"
+      
+      @classwork = Classwork.new(prms)
+      @classwork.save
+      
+      @site.classworks << @classwork
+      # Useless End
       
       flash[:notice] = "#{@site.name} was successfully created."
       redirect_to site_path(@site)
