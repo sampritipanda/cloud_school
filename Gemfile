@@ -46,6 +46,9 @@ gem 'devise'
 # To use Turbolinks
 gem 'turbolinks'
 
+# To use NewRelic
+gem 'newrelic_rpm'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
