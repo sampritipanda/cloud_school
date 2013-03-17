@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
       sites_join_path
     end
   end
+  
+  def paper_bg
+    (params[:controller] == "sites" && (params[:action] == "join" || params[:action] == "new" || params[:action] == "create")) || (/^(devise)/.match(params[:controller]))
+  end
+  
+  helper_method :paper_bg
 end

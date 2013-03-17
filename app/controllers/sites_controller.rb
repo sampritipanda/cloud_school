@@ -1,4 +1,8 @@
 class SitesController < ApplicationController
+  def test
+    
+  end
+  
   def new
     @site = Site.new
   end
@@ -9,21 +13,21 @@ class SitesController < ApplicationController
       @site.users << current_user
       
       # Useless Start
-      prms = {:date => Time.now.to_date}
-      prms[:content] = "Maths - Chapter 12 Exercise 13\nEnglish - Literature Reader - Caesar - Page 3 and 4\nPhysics - Sound - Exercises."
+      #prms = {:date => Time.now.to_date}
+      #prms[:content] = "Maths - Chapter 12 Exercise 13\nEnglish - Literature Reader - Caesar - Page 3 and 4\nPhysics - Sound - Exercises."
       
-      @classwork = Classwork.new(prms)
-      @classwork.save
+      #@classwork = Classwork.new(prms)
+      #@classwork.save
       
-      @site.classworks << @classwork
+      #@site.classworks << @classwork
       
-      prms = {:date => Time.now.to_date.yesterday.yesterday}
-      prms[:content] = "Maths - Chapter 12 Exercise 13\n"
+      #prms = {:date => Time.now.to_date.yesterday.yesterday}
+      #prms[:content] = "Maths - Chapter 12 Exercise 13\n"
       
-      @classwork = Classwork.new(prms)
-      @classwork.save
+      #@classwork = Classwork.new(prms)
+      #@classwork.save
       
-      @site.classworks << @classwork
+      #@site.classworks << @classwork
       # Useless End
       
       flash[:notice] = "#{@site.name} was successfully created."
@@ -43,9 +47,12 @@ class SitesController < ApplicationController
     end
     
     if @classwork
+      @classwork_id = @classwork.id 
       @classwork = @classwork.content
+      @available = true
     else
       @classwork = "No classwork available for #{params[:datepicker] || "today"}"
+      @available = false
     end
   end
    

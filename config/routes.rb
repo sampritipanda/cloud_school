@@ -6,10 +6,11 @@ CloudSchool::Application.routes.draw do
   end
   
   match "/sites/join" => "sites#join"
+  match "/sites/test" => "sites#test"
   
   resources :sites do
     resources :classworks, :except => [:index, :show, :destroy]
-    match 'classworks/get' => 'classworks#get'
+    resources :homeworks
   end
   
   # root :to => 'home#index'

@@ -11,7 +11,7 @@
   
   <style>
   	body {
-		<% if (params[:controller] == "sites" && (params[:action] == "join" || params[:action] == "new")) || (/^(devise)/.match(params[:controller])) %>
+		<% if paper_bg %>
 			background-color:#A0AA6D;
 			background-image:url('/images/notebook_paper2.jpg');
 			background-repeat:no-repeat;
@@ -28,7 +28,7 @@
 
 <div class="container-fluid">
 	
-	<!-- Temp Start ->
+	<!-- Temp Start
 	<div class="row">
 		<div class="span3">
 			<h1><img src="http://placehold.it/400x100&text=Logo" /></h1>
@@ -40,7 +40,7 @@
 			<% end %>
 		</div>
 	</div>
-	<!-- Temp Start -->
+	Temp End -->
 	
 	<% if user_signed_in? %>
 		Signed in as <%= current_user.username %>. Not You?
@@ -53,8 +53,21 @@
 
 	<!--<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>-->
-	
-	<%= yield %>
+
+	<% if paper_bg %>
+		<%= yield %>
+	<% else %>
+		<table id="site-content"><tr><td>
+			<div class="row">
+			    <div class="span2">
+			    	<%= render "sites/sidebar" %>
+			    </div>
+			    <div class="span7">
+			    	<%= yield %>	
+			    </div>
+		    </div>
+		</td></tr></table>
+	<% end %>
 </div>
 
 </body>

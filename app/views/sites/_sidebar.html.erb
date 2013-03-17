@@ -19,7 +19,9 @@
 <center><h3 style="color: #663399;"><u><%= current_user.site.name %></u></h3></center>
 
 <div id="sidebar-links">
-	<a href="#">Home</a><br />
+	<a href="<%= site_path(current_user.site.id) %>">Home</a><br />
+	<% if current_user.admin %><a href="<%= new_site_classwork_path(current_user.site.id) %>">Add Classwork</a><br /><% end %>
+	<% if current_user.admin %><a href="<%= new_site_homework_path(current_user.site.id) %>">Add Homework</a><br /><% end %>
 	<a href="#">eBooks</a><br />
 	<a href="#">Miscellaneous</a><br />
 	<a href="#">Homework</a><br />

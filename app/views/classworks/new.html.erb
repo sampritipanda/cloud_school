@@ -1,0 +1,17 @@
+<div id="frame-content"><center>
+	<%= form_for(@classwork, :url => site_classworks_path(current_user.site.id)) do |f| %>
+	  <fieldset>
+	  	  <legend>Add Classwork</legend>
+	  	  
+		  <div><%= f.label :date %>
+		  <%= f.date_select :date, :start_year => 1940 %></div>
+		
+		  <div><!--[if lt IE 10]><%= f.label :classwork %><![endif]-->
+		  <%= f.text_area :content, :id => "content_textarea",:placeholder => "Enter Classwork Here .....", :style => "width: 647px; height: 340px;" %></div>
+		  <script type="text/javascript">
+		  	$('#content_textarea').wysihtml5();
+		  </script>
+		  <div><%= f.submit "Add", :class => "btn btn-large btn-primary" %></div>
+	  </fieldset>
+	<% end %>
+</center></div>

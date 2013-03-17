@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306155743) do
+ActiveRecord::Schema.define(:version => 20130317141127) do
 
   create_table "classworks", :force => true do |t|
     t.date     "date"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20130306155743) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "site_id"
+  end
+
+  create_table "homeworks", :force => true do |t|
+    t.string  "subject"
+    t.string  "chapter"
+    t.date    "issue_date"
+    t.date    "submission_date"
+    t.text    "content"
+    t.integer "site_id"
   end
 
   create_table "sites", :force => true do |t|
@@ -30,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20130306155743) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -40,12 +49,13 @@ ActiveRecord::Schema.define(:version => 20130306155743) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "username"
     t.string   "name"
     t.date     "birthday"
     t.integer  "site_id"
+    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

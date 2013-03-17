@@ -9,9 +9,14 @@
 	});
 </script>
 
-
 <%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do %>
 	Date: <%= text_field_tag "datepicker" %>
 <% end %>
 
-<textarea id="classwork" style="width: 650px; height: 140px;" readonly=""><%= @classwork %></textarea>
+<!--<textarea id="classwork" style="width: 647px; height: 140px;" readonly=""><%= @classwork %></textarea>-->
+
+<div class="content-box-gray">
+	<%= simple_format(@classwork) %>
+</div>
+
+<center><% if current_user.admin && @available %><a href="<%= edit_site_classwork_path(current_user.site.id, @classwork_id) %>">Edit this Classwork</a><br /><% end %></center>

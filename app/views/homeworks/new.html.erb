@@ -1,0 +1,26 @@
+<div id="frame-content"><center>
+	<%= form_for(@homework, :url => site_homeworks_path(current_user.site.id)) do |f| %>
+	  <fieldset>
+	  	  <legend>Add Homework</legend>
+	  	  
+		  <div><%= f.label :date_given %>
+		  <%= f.date_select :issue_date, :start_year => 1940 %></div>
+		  
+		  <div><%= f.label :submission_date %>
+		  <%= f.date_select :submission_date, :start_year => 1940 %></div>
+		  
+		  <div><!--[if lt IE 10]><%= f.label :subject %><![endif]-->
+		  <%= f.text_field :subject, :placeholder => "Subject" %></div>
+		  
+		  <div><!--[if lt IE 10]><%= f.label :chapter %><![endif]-->
+		  <%= f.text_field :chapter, :placeholder => "Chapter" %></div>
+		
+		  <div><!--[if lt IE 10]><%= f.label :classwork %><![endif]-->
+		  <%= f.text_area :content, :id => "content_textarea",:placeholder => "Enter Homework Content Here .....", :style => "width: 647px; height: 340px;" %></div>
+		  <script type="text/javascript">
+		  	$('#content_textarea').wysihtml5();
+		  </script>
+		  <div><%= f.submit "Add", :class => "btn btn-large btn-primary" %></div>
+	  </fieldset>
+	<% end %>
+</center></div>
