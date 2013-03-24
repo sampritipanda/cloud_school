@@ -49,6 +49,9 @@ gem 'turbolinks'
 # To use NewRelic
 gem 'newrelic_rpm'
 
+# To use CanCan Authorization
+gem 'cancan'
+
 # to use Subdomains
 #gem 'subdomain-fu', '1.0.0.beta2'
 

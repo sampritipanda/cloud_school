@@ -15,8 +15,22 @@
 
 <!--<textarea id="classwork" style="width: 647px; height: 140px;" readonly=""><%= @classwork %></textarea>-->
 
-<div class="content-box-gray">
+<div id="classwork" class="content-box-gray">
 	<%= simple_format(@classwork) %>
+</div>
+
+<div id="homework" class="content-box-gray">
+	<% if @homeworks =~ /No homework.+/ %>
+		<%= simple_format(@homeworks) %>
+	<% else %>
+		<% @homeworks.each do |homework| %>
+			<h4><%= homework.subject + " - " + homework.chapter + " - " + "#{@date.day}/#{@date.month}/#{@date.year}" %></h4>
+			<%= simple_format(sanitize(truncate(homework.content, :length => 150))) %>
+			<hr>
+			<%= "Submission Date - #{homework.submission_date}"%>
+			<br /><br /><br />
+		<% end %>
+	<% end %>
 </div>
 
 <center><% if current_user.admin && @available %><a href="<%= edit_site_classwork_path(current_user.site.id, @classwork_id) %>">Edit this Classwork</a><br /><% end %></center>

@@ -22,9 +22,20 @@ class HomeworksController < ApplicationController
   end
   
   def edit
+    @homework = Homework.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
+    if @homework.nil?
+      redirect_to site_path(current_user.site.id)
+    end
   end
   
   def update
+    @homework = Homework.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
+    if @homework.nil?
+      redirect_to site_path(current_user.site.id)
+    end
+    @homework.update_attributes!(params[:homework])
+    flash[:notice] = "Homework for #{@homework.issue_date} was successfully updated."
+    redirect_to site_homework_path(current_user.site.id, @homework.id)
   end
   
   def destroy

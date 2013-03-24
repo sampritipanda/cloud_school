@@ -11,6 +11,8 @@ class SitesController < ApplicationController
     @site = Site.new(params[:site])
     if @site.save
       @site.users << current_user
+      current_user.admin = true
+      current_user.save!
       
       # Useless Start
       #prms = {:date => Time.now.to_date}
@@ -40,19 +42,23 @@ class SitesController < ApplicationController
   def show
     if params[:datepicker]
       @date = Date.strptime(params[:datepicker], "%d/%m/%Y").to_date
-      @classwork = Classwork.where("date = ? AND site_id = ?", @date, current_user.site.id)[0]
     else
       @date = Time.now.to_date
-      @classwork = Classwork.where("date = ? AND site_id = ?", @date, current_user.site.id)[0]
     end
+    
+    @classwork = Classwork.where("date = ? AND site_id = ?", @date, current_user.site.id)[0]
+    @homeworks = Homework.where("issue_date = ? AND site_id = ?", @date, current_user.site.id)
     
     if @classwork
       @classwork_id = @classwork.id 
       @classwork = @classwork.content
       @available = true
-    else
+    end
+    if @homeworks.size == 0
+      @homeworks = "No homework available for #{params[:datepicker] || "today"}"
+    end
+    if not @classwork
       @classwork = "No classwork available for #{params[:datepicker] || "today"}"
-      @available = false
     end
   end
    
