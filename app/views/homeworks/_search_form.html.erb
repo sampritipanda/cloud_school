@@ -1,0 +1,6 @@
+<%= form_tag site_homeworks_search_path(current_user.site.id), :method => :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>

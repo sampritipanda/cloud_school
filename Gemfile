@@ -1,22 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails'#, '~> 3.2.13'
 gem 'haml'
 gem 'pg'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# for Heroku deployment
 group :development, :test do
   #gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
   #gem "nifty-generators"
 end
 
-#group :production do
-#  gem 'pg'
-#end
+group :production do
+  
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,6 +32,10 @@ group :assets do
   
   gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
                                    :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
+  
+  gem 'calendar_date_select'#, :git => 'https://github.com/paneq/calendar_date_select.git'
+  
+  #gem 'jquery-datatables-rails', :git => 'git://github.com/rweng/jquery-datatables-rails.git'
 end
 
 gem 'jquery-rails'
@@ -51,6 +54,15 @@ gem 'newrelic_rpm'
 
 # To use CanCan Authorization
 gem 'cancan'
+
+# To use PaperClip for File Uploads
+gem 'paperclip'
+
+# For using Bonsai ElasticSearch
+gem 'tire'
+
+# WSYIWYG Editor elrte
+#gem 'elrte'
 
 # to use Subdomains
 #gem 'subdomain-fu', '1.0.0.beta2'

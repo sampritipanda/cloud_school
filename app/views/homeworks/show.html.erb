@@ -1,3 +1,11 @@
-<div id="frame-content"><center>
-	
-</center></div>
+<div>
+	<div class="page-header">
+		<h2 class="text-center"><%= @homework.subject + " - " + @homework.chapter + " - " + "#{@homework.issue_date.day}/#{@homework.issue_date.month}/#{@homework.issue_date.year}" %></h2>
+	</div>	
+	<%= simple_format(@homework.content) %>
+	<center><hr /></center>
+	<%= "Submission Date - #{@homework.submission_date}"%>
+	<hr />
+</div>
+
+<center><% if current_user.admin %><a href="<%= edit_site_homework_path(current_user.site.id, @homework.id) %>">Edit this Homework</a><br /><% end %></center>

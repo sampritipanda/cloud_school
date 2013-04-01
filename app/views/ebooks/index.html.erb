@@ -1,0 +1,34 @@
+<div class="page-header"><center>
+	<h3>Food for the mind - eBooks</h3>
+</center></div>
+
+<table class="table table-striped">
+	<tr>
+		<th>Name</th>
+		<th>Created At</th>
+		<!--<th>Description</th>-->
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @ebooks.each do |ebook| %>
+	  <tr>
+	    <td><%= ebook.name %></td>
+	    <td><%= ebook.created_at %></td>
+	    <!--<td><%= ebook.description %></td>-->
+	    <!-- site_ebook_path(current_user.site.id, ebook.id) -->
+	    <td><%= link_to 'Show', ebook.book.url %></td>
+	    <% if current_user.admin %><td><%= link_to 'Edit', "javascript:edit(\"#{edit_site_ebook_path(current_user.site.id, ebook.id)}\")" %></td><% end %>
+	    <% if current_user.admin %><td><%= link_to 'Destroy', site_ebook_path(current_user.site.id, ebook.id), method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+	  </tr>
+	<% end %>
+</table>
+
+<!-- link_to 'New Ebook', new_site_ebook_path(current_user.site.id) -->
+
+<hr id="seperator" />
+
+<center><div id="form">
+	<%= render :partial => 'form', :locals => {:url => "site_ebooks_path(current_user.site.id)", :type => "Add"} %>
+</div></center>

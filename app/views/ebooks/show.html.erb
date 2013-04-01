@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ebook.name %>
+</p>
+
+<p>
+	<b>eBook</b>
+	<%= link_to "Book Link", @ebook.book.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_ebook_path(current_user.site.id, @ebook.id) %> |
+<%= link_to 'Back', site_ebooks_path(current_user.site.id) %>

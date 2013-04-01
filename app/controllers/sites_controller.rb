@@ -41,7 +41,7 @@ class SitesController < ApplicationController
   
   def show
     if params[:datepicker]
-      @date = Date.strptime(params[:datepicker], "%d/%m/%Y").to_date
+      @date = Date.strptime(params[:datepicker], "%B %d, %Y").to_date
     else
       @date = Time.now.to_date
     end

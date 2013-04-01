@@ -30,7 +30,7 @@
 
 .flash.notice, .flash.info {
 	border: thin solid #ff0;
-	background: #ffe;
+	background: #bce8f1;
 }
 
 .flash.warning {
@@ -63,4 +63,10 @@
     width: 915px;
     background-color:#E9ECCF;
     background-origin:content-box;
+}
+
+hr#seperator {
+	color: #000;
+	background-color: #000;
+	height: 5px;
 }

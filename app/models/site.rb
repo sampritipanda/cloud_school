@@ -2,6 +2,7 @@ class Site < ActiveRecord::Base
   has_many :users
   has_many :classworks
   has_many :homeworks
+  has_many :ebooks
   
   attr_accessible :name, :url, :code
   

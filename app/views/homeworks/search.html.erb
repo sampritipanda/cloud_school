@@ -1,0 +1,11 @@
+<% if @homeworks.nil? %>
+	<%= render "search_form" %>
+<% else %>
+	<% @homeworks.each do |homework| %>
+		<a href="<%= site_homework_path(current_user.site.id, homework.id) %>"><h4><%= homework.subject + " - " + homework.chapter + " - " + "#{homework.issue_date.day}/#{homework.issue_date.month}/#{homework.issue_date.year}" %></h4></a>
+		<%= simple_format(sanitize(truncate(homework.content, :length => 150))) %></li></ol></ul>
+		<hr />
+		<%= "Submission Date - #{homework.submission_date}"%>
+		
+	<% end %>
+<% end %>

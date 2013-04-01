@@ -1,0 +1,15 @@
+<style>
+	#ebook-form {
+		position: absolute;
+	    height: 200px;
+	    width: 400px;
+	    margin: -100px 0 0 -200px;
+	    top: 35%;
+	    left: 50%;
+	}
+</style>
+
+<div id="ebook-form"><center>
+	<%= render :partial => 'form', :locals => {:type => "site_ebooks_path(current_user.site.id)"} %>
+	<%= link_to 'Back', site_ebooks_path(current_user.site.id) %>
+</center></div>

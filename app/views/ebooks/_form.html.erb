@@ -1,0 +1,27 @@
+<%= form_for(@ebook, :url => eval(url)) do |f| %>
+  <% if @ebook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ebook.errors.count, "error") %> prohibited this ebook from being saved:</h2>
+
+      <ul>
+      <% @ebook.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+  	<legend><%= type %> eBook</legend>
+  	
+    <div><!--[if lt IE 10]><%= f.label :name %><![endif]-->
+    <%= f.text_field :name, :placeholder => "eBook Name ..." %></div>
+    
+    <div><!--[if lt IE 10]><%= f.label :file %><![endif]-->
+    <%= f.file_field :book, :placeholder => "Select the eBook File ..." %></div>
+    
+    <br />
+    
+    <div><%= f.submit "Add", :class => "btn btn-large btn-primary" %></div>
+  </fieldset>
+<% end %>

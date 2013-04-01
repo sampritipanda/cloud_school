@@ -1,6 +1,6 @@
 <script>
 	$(function() {
-		$("#datepicker").datepicker({
+		$("#datepcker").datepicker({
 			dateFormat: "dd/mm/yy",
 			onSelect: function(dateText, inst) {
 				document.forms["classwork_get"].submit();
@@ -9,8 +9,11 @@
 	});
 </script>
 
-<%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do %>
-	Date: <%= text_field_tag "datepicker" %>
+<%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do%>
+	<%= calendar_date_select_tag "datepicker", nil, :embedded => true, :year_range => 1.year.ago..0.years.ago,
+		:onchange =>  "document.forms[\"classwork_get\"].submit();"
+	%>
+	<!--Date: <%= text_field_tag "datepicker" %>-->
 <% end %>
 
 <!--<textarea id="classwork" style="width: 647px; height: 140px;" readonly=""><%= @classwork %></textarea>-->
@@ -24,11 +27,11 @@
 		<%= simple_format(@homeworks) %>
 	<% else %>
 		<% @homeworks.each do |homework| %>
-			<h4><%= homework.subject + " - " + homework.chapter + " - " + "#{@date.day}/#{@date.month}/#{@date.year}" %></h4>
-			<%= simple_format(sanitize(truncate(homework.content, :length => 150))) %>
-			<hr>
+			<a href="<%= site_homework_path(current_user.site.id, homework.id) %>"><h4><%= homework.subject + " - " + homework.chapter + " - " + "#{@date.day}/#{@date.month}/#{@date.year}" %></h4></a>
+			<%= simple_format(sanitize(truncate(homework.content, :length => 150))) %></li></ol></ul>
+			<hr />
 			<%= "Submission Date - #{homework.submission_date}"%>
-			<br /><br /><br />
+			<% if @homeworks.last != homework and @homeworks.first != @homeworks.last %><br /><hr id="seperator" /><% end %>
 		<% end %>
 	<% end %>
 </div>
