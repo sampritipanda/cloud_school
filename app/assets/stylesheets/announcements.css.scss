@@ -1,0 +1,12 @@
+// Place all the styles related to the Announcements controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#announcement-form {
+  position: absolute;
+  height: 200px;
+  width: 400px;
+  margin: -100px 0 0 -200px;
+  top: 35%;
+  left: 50%;
+}

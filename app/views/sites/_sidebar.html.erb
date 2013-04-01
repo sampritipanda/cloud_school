@@ -22,9 +22,8 @@
 	<a href="<%= site_path(current_user.site.id) %>">Home</a><br />
 	<% if current_user.admin %><a href="<%= new_site_classwork_path(current_user.site.id) %>">Add Classwork</a><br /><% end %>
 	<% if current_user.admin %><a href="<%= new_site_homework_path(current_user.site.id) %>">Add Homework</a><br /><% end %>
-	<a href="<%= site_ebooks_path(current_user.site.id) %>">eBooks</a><br />
-	<a href="#">Miscellaneous</a><br />
-	
+	<a href="<%= site_announcements_path(current_user.site.id) %>">Announcements</a><br />
+	<a href="<%= site_ebooks_path(current_user.site.id) %>">eBooks</a><br />	
 	
 	
 	<div class="dropdown-submenu">
@@ -34,8 +33,6 @@
 			<li><a tabindex="-1" href="<%= site_homeworks_path(current_user.site.id, :week => 1, :type => :issue_date) %>">Issue Date Wise</a></li>
 		</ul>
 	</div>
-	
-	<a href="#">Music</a>
 </div>
 
 <div id="sidebar-img">
@@ -43,13 +40,14 @@
 </div>
 
 <div id="sidebar-links">
-	<a href="#">Announcements</a><br />
-	<a href="#">Calendar</a><br />
-	<a href="#">Student Blogs</a><br />
-	<a href="#">Reading List</a><br />
-	<a href="#">Useful Links</a><br />
-	<a href="#">Forms and Docs</a><br />
-	<a href="#">Reference</a><br />
+	<!--<a href="#">Miscellaneous</a><br />-->
+	<!--<a href="#">Music</a>-->
+	<!--<a href="#">Calendar</a><br />-->
+	<!--<a href="#">Student Blogs</a><br />-->
+	<!--<a href="#">Reading List</a><br />-->
+	<!--<a href="#">Useful Links</a><br />-->
+	<!--<a href="#">Forms and Docs</a><br />-->
+	<!--<a href="#">Reference</a><br />-->
 </div>
 
 <div id="sidebar-poll">

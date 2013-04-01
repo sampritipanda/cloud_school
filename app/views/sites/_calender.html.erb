@@ -9,12 +9,20 @@
 	});
 </script>
 
-<%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do%>
-	<%= calendar_date_select_tag "datepicker", nil, :embedded => true, :year_range => 1.year.ago..0.years.ago,
-		:onchange =>  "document.forms[\"classwork_get\"].submit();"
-	%>
-	<!--Date: <%= text_field_tag "datepicker" %>-->
-<% end %>
+<table>
+	<td>
+		<%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do%>
+			<%= calendar_date_select_tag "datepicker", nil, :embedded => true, :year_range => 1.year.ago..0.years.ago,
+				:onchange =>  "document.forms[\"classwork_get\"].submit();"
+			%>
+			<!--Date: <%= text_field_tag "datepicker" %>-->
+		<% end %>
+	</td>
+	
+	<td>
+		<img src="<%= @link %>" id="photo" style="width: 453px; height: 257px; padding-left: 15px; padding-bottom: 19px"/>
+	</td>
+</table>
 
 <!--<textarea id="classwork" style="width: 647px; height: 140px;" readonly=""><%= @classwork %></textarea>-->
 

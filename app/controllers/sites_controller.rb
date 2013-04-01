@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class SitesController < ApplicationController
   def test
     
@@ -60,6 +62,8 @@ class SitesController < ApplicationController
     if not @classwork
       @classwork = "No classwork available for #{params[:datepicker] || "today"}"
     end
+    
+    @link, @name = bing
   end
    
   def join
@@ -77,5 +81,19 @@ class SitesController < ApplicationController
     site.users << current_user
     
     redirect_to site_path(site)
+  end
+  
+  def bing
+    source = open("http://www.bing.com").read
+    
+    link_regexp = /g_img=\{url:'(.+)',id:/
+    source =~ link_regexp
+    link = 'http://bing.com' + $1
+    
+    name_regexp = /<\/div><\/div><span><p>(.+) \(&#169;.+<\/p>/
+    source =~ name_regexp
+    name_part = $1
+    
+    return link, name_part
   end
 end

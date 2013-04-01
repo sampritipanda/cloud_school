@@ -1,0 +1,32 @@
+<%= form_for(@announcement, :url => eval(url)) do |f| %>
+  <% if @announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+      <% @announcement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+	  <div class="page-header"><h3><%= type %> Announcement</h3></div>
+	
+	  <div><!--[if lt IE 10]><%= f.label :title %><![endif]-->
+	  <%= f.text_field :title, :placeholder => "Title" %></div>
+	  
+	  <br />
+	  
+	  <div><!--[if lt IE 10]><%= f.label :content %><![endif]-->
+	  <%= f.text_area :content, :id => "content_textarea", :placeholder => "Enter Announcment Here .....", :style => "width: 647px; height: 340px;" %></div>
+	  <script type="text/javascript">
+	  	$('#content_textarea').wysihtml5();
+	  </script>
+	  
+	  <br />
+    
+      <div><%= f.submit "Add", :class => "btn btn-large btn-primary" %></div>
+  </fieldset>
+<% end %>

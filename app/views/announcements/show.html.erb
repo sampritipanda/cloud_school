@@ -1,0 +1,14 @@
+<div>
+	<div class="page-header">
+		<h2 class="text-center"><%= @announcement.title %></h2>
+		<center><em>Created On: <%= @announcement.created_at.to_date.strftime("%d %b %Y") %></em></center>
+	</div>	
+	<%= simple_format(@announcement.content) %>
+	<hr />
+</div>
+
+<center><big>
+	<%= link_to 'Edit', edit_site_announcement_path(current_user.site.id, @announcement.id) %> |
+	<%= link_to 'Back', site_announcements_path(current_user.site.id) %> |
+	<%= link_to 'Destroy', site_ebook_path(current_user.site.id, @announcement.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+</big></center>

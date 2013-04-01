@@ -12,6 +12,7 @@ CloudSchool::Application.routes.draw do
     resources :classworks, :except => [:index, :show, :destroy]
     match "/homeworks/search" => "homeworks#search"
     resources :homeworks
+    resources :announcements
     resources :ebooks, :except => [:new, :show]
   end
   
