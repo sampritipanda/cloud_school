@@ -33,7 +33,7 @@ group :assets do
   gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
                                    :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
   
-  gem 'calendar_date_select'#, :git => 'https://github.com/paneq/calendar_date_select.git'
+  gem 'calendar_date_select', :git => 'https://github.com/paneq/calendar_date_select.git'
   
   #gem 'jquery-datatables-rails', :git => 'git://github.com/rweng/jquery-datatables-rails.git'
 end
