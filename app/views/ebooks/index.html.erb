@@ -5,7 +5,7 @@
 <table class="table table-striped">
 	<tr>
 		<th>Name</th>
-		<th>Created At</th>
+		<th>Created By</th>
 		<!--<th>Description</th>-->
 		<th></th>
 		<th></th>
@@ -15,11 +15,11 @@
 	<% @ebooks.each do |ebook| %>
 	  <tr>
 	    <td><%= ebook.name %></td>
-	    <td><%= ebook.created_at %></td>
+	    <td><%= ebook.user.name %></td>
 	    <!--<td><%= ebook.description %></td>-->
 	    <!-- site_ebook_path(current_user.site.id, ebook.id) -->
 	    <td><%= link_to 'Show', ebook.book.url %></td>
-	    <% if current_user.admin %><td><%= link_to 'Edit', "javascript:edit(\"#{edit_site_ebook_path(current_user.site.id, ebook.id)}\")" %></td><% end %>
+	    <!--<% if current_user.admin %><td><%= link_to 'Edit', edit_site_ebook_path(current_user.site.id, ebook.id) %></td><% end %>-->
 	    <% if current_user.admin %><td><%= link_to 'Destroy', site_ebook_path(current_user.site.id, ebook.id), method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
 	  </tr>
 	<% end %>

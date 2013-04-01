@@ -1,7 +1,6 @@
 class Ebook < ActiveRecord::Base
-  
-  
   belongs_to :site
+  belongs_to :user
   
   attr_accessible :name, :book
   has_attached_file :book

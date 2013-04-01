@@ -31,6 +31,7 @@ class EbooksController < ApplicationController
 
     if @ebook
       @ebook.site = current_user.site
+      @ebook.user = current_user
       @ebook.save!
       
       redirect_to site_ebooks_path(current_user.site.id), notice: 'Ebook was successfully created.'

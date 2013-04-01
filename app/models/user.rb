@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :site
+  has_many :ebooks
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
