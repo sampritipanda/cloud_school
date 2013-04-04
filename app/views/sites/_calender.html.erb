@@ -1,3 +1,10 @@
+<div id="myModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 948px; height: 380px; left: 34%; top: 2%;">
+	<img src="<%= @link %>" id="photo" />
+	<div class="modal-footer">
+		<big><p class="text-center"><%= @name.html_safe %></p></big>
+	</div>
+</div>
+
 <script>
 	$(function() {
 		$("#datepcker").datepicker({
@@ -28,7 +35,7 @@
 	</td>
 	
 	<td>
-		<img src="<%= @link %>" id="photo" style="width: 453px; height: 257px; padding-left: 15px; padding-bottom: 19px"/>
+		<a href="#myModal" role="button" data-toggle="modal"><img src="<%= @link %>" id="photo" style="width: 453px; height: 257px; padding-left: 15px; padding-bottom: 19px"/></a>
 	</td>
 </table>
 

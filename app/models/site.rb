@@ -5,7 +5,7 @@ class Site < ActiveRecord::Base
   has_many :ebooks
   has_many :announcements
   
-  attr_accessible :name, :url, :code
+  attr_accessible :name, :url, :code, :logins
   
   validates_presence_of :name, :url, :code
   validates_uniqueness_of :name, :url, :code

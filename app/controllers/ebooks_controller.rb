@@ -43,6 +43,7 @@ class EbooksController < ApplicationController
   # PUT /ebooks/1
   # PUT /ebooks/1.json
   def update
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @ebook = Ebook.where(:id => params[:id], :site_id => current_user.site.id)[0]
 
     if @ebook.update_attributes(params[:ebook])
@@ -55,6 +56,7 @@ class EbooksController < ApplicationController
   # DELETE /ebooks/1
   # DELETE /ebooks/1.json
   def destroy
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @ebook = Ebook.where(:id => params[:id], :site_id => current_user.site.id)[0]
     @ebook.destroy
 

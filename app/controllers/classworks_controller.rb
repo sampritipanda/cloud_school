@@ -4,6 +4,7 @@ class ClassworksController < ApplicationController
   end
 
   def create
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @classwork = Classwork.new(params[:classwork])
     if @classwork.save
       current_user.site.classworks << @classwork
@@ -23,6 +24,7 @@ class ClassworksController < ApplicationController
   end
 
   def update
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @classwork = Classwork.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
     if @classwork.nil?
       redirect_to site_path(current_user.site.id)
@@ -33,5 +35,9 @@ class ClassworksController < ApplicationController
   end
 
   def destroy
+    redirect_to site_path(current_user.site.id) unless current_user.admin
+    @classwork = Classwork.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
+    @classwork.destroy
+    redirect_to site_path(current_user.site.id)
   end
 end

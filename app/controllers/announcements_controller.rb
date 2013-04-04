@@ -25,6 +25,7 @@ class AnnouncementsController < ApplicationController
   # POST /announcements
   # POST /announcements.json
   def create
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @announcement = Announcement.create(params[:announcement])
     if @announcement
       @announcement.site_id = current_user.site.id
@@ -38,6 +39,7 @@ class AnnouncementsController < ApplicationController
   # PUT /announcements/1
   # PUT /announcements/1.json
   def update
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @announcement = Announcement.where(:id => params[:id], :site_id => current_user.site.id)[0]
 
     if @announcement.update_attributes(params[:announcement])
@@ -50,6 +52,7 @@ class AnnouncementsController < ApplicationController
   # DELETE /announcements/1
   # DELETE /announcements/1.json
   def destroy
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @announcement = Announcement.where(:id => params[:id], :site_id => current_user.site.id)[0]
     @announcement.destroy
 

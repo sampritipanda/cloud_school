@@ -55,6 +55,8 @@ class SitesController < ApplicationController
       @classwork_id = @classwork.id 
       @classwork = @classwork.content
       @available = true
+      @classwork.increment(:views)
+      @classwork.save!
     end
     if @homeworks.size == 0
       @homeworks = "No homework available for #{params[:datepicker] || "today"}"

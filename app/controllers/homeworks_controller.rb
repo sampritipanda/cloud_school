@@ -19,6 +19,9 @@ class HomeworksController < ApplicationController
   
   def show
     @homework = Homework.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
+    @homework.views = 0 if @homework.views.nil?
+    @homework.views += 1
+    @homework.save!
   end
   
   def new
@@ -26,6 +29,7 @@ class HomeworksController < ApplicationController
   end
   
   def create
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @homework = Homework.new(params[:homework])
     if @homework.save
       current_user.site.homeworks << @homework
@@ -45,6 +49,7 @@ class HomeworksController < ApplicationController
   end
   
   def update
+    redirect_to site_path(current_user.site.id) unless current_user.admin
     @homework = Homework.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
     if @homework.nil?
       redirect_to site_path(current_user.site.id)
