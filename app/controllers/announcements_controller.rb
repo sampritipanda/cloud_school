@@ -2,7 +2,13 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.where(:site_id => current_user.site.id)
+    @announcements = Announcement.where(:site_id => current_user.site.id).page(params[:page]).sort { |a,b| a.created_at <=> b.created_at }
+    
+    respond_to do |format|
+      format.js
+      format.html # index.html.erb
+      format.xml  { render :xml => @announcements }
+    end
   end
 
   # GET /announcements/1

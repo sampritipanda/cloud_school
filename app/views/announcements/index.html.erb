@@ -2,14 +2,43 @@
 	<h3>Announcements</h3>
 </center></div>
 
-<div id="announcements">
-	<% @announcements.each do |announcement| %>
-		<a href="<%= site_announcement_path(current_user.site.id, announcement.id) %>"><h4><%= announcement.title %></h4></a>
-		<small><em>Created On: <%= announcement.created_at.to_date.strftime("%d %b %Y") %></em></small><br /><br />
-		<%= simple_format(sanitize(truncate(announcement.content, :length => 150))) %></li></ol></ul>
-		<hr />
-		<% if @announcements.last != announcement and @announcements.first != @announcements.last %><br /><hr id="seperator" /><% end %>
-	<% end %>
+<div id='announcments'>
+	<div class='page'>
+		<%= render @announcements %>
+	</div>
 </div>
 
 <center><big><%= link_to 'New Announcement', new_site_announcement_path %></big></center>
+
+<script type="text/javascript">
+(function() {
+  var page = 1,
+      loading = false;
+
+  function nearBottomOfPage() {
+    return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
+  }
+
+  $(window).scroll(function(){
+    if (loading) {
+      return;
+    }
+
+    if(nearBottomOfPage()) {
+      loading=true;
+      page++;
+      $.ajax({
+        url: '/sites/<%= current_user.site.id %>/announcements?page=' + page,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          $(window).sausage('draw');
+          loading=false;
+        }
+      });
+    }
+  });
+
+  $(window).sausage();
+}());
+</script>
