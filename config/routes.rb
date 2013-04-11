@@ -1,4 +1,7 @@
 CloudSchool::Application.routes.draw do
+  match "/admin" => "admin#index"
+  match "/admin/run" => "admin#run"
+  
   devise_for :users
   
   devise_scope :user do

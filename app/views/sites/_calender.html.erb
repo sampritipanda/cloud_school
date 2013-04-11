@@ -5,32 +5,15 @@
 	</div>
 </div>
 
-<script>
-	$(function() {
-		$("#datepcker").datepicker({
-			dateFormat: "dd/mm/yy",
-			onSelect: function(dateText, inst) {
-				document.forms["classwork_get"].submit();
-			}
-		});
-	});
-</script>
-
 <table>
 	<td>
 		<%= form_tag url_for(site_path(current_user.site)), :method => :get, :id => 'classwork_get' do%>
-			<!-- calendar_date_select_tag "datepicker", nil, :embedded => true, :year_range => 1.year.ago..0.years.ago,
-				:onchange =>  "document.forms[\"classwork_get\"].submit();"
-			-->
-			
 			<form accept-charset="UTF-8" action="<%= site_path(current_user.site) %>" id="classwork_get" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
 			<input id="datepicker" name="datepicker" onchange="document.forms[&quot;classwork_get&quot;].submit();" type="hidden" /><span id="cds_placeholder_59844" style="display: none; position: absolute;"></span><script type="text/javascript">
 			//<![CDATA[
-			new CalendarDateSelect( $('cds_placeholder_59844').previous(), {embedded:true, year_range:[2012, 2013]} ); 
+			new CalendarDateSelect( $('cds_placeholder_59844').previous(), {embedded:true, year_range:[<%= @date.year - 1.year %>, <%= @date.year + 1.year %>]} ); 
 			//]]>
 			</script>
-						
-			<!--Date: <%= text_field_tag "datepicker" %>-->
 		<% end %>
 	</td>
 	
@@ -38,8 +21,6 @@
 		<a href="#myModal" role="button" data-toggle="modal"><img src="<%= @link %>" id="photo" style="width: 453px; height: 257px; padding-left: 15px; padding-bottom: 19px"/></a>
 	</td>
 </table>
-
-<!--<textarea id="classwork" style="width: 647px; height: 140px;" readonly=""><%= @classwork %></textarea>-->
 
 <div id="classwork" class="content-box-gray">
 	<%= simple_format(@classwork) %>
@@ -50,10 +31,10 @@
 		<%= simple_format(@homeworks) %>
 	<% else %>
 		<% @homeworks.each do |homework| %>
-			<a href="<%= site_homework_path(current_user.site.id, homework.id) %>"><h4><%= homework.subject + " - " + homework.chapter + " - " + "#{@date.day}/#{@date.month}/#{@date.year}" %></h4></a>
+			<a href="<%= site_homework_path(current_user.site.id, homework.id) %>"><h4><%= homework.subject + " - " + homework.chapter + " - " + l(@date).to_s %></h4></a>
 			<%= simple_format(sanitize(truncate(homework.content, :length => 150))) %></li></ol></ul>
 			<hr />
-			<%= "Submission Date - #{homework.submission_date}"%>
+			<%= "Submission Date - #{l(homework.submission_date)}"%>
 			<% if @homeworks.last != homework and @homeworks.first != @homeworks.last %><br /><hr id="seperator" /><% end %>
 		<% end %>
 	<% end %>

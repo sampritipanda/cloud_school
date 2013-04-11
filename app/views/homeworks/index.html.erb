@@ -1,15 +1,15 @@
 <div class="page-header"><center>
 	<h3>Homework of the Week by <%= @type.to_s.gsub('_', ' ').titleize %></h3>
 	
-	<h4><%= @start_date.to_s + " --- " + @end_date.to_s %></h4>
+	<h4><%= l(@start_date).to_s + " --- " + l(@end_date).to_s %></h4>
 </center></div>
 
 <div id="homework">
 	<% @homeworks.each do |homework| %>
-		<a href="<%= site_homework_path(current_user.site.id, homework.id) %>"><h4><%= homework.subject + " - " + homework.chapter + " - " + "#{homework.issue_date.day}/#{homework.issue_date.month}/#{homework.issue_date.year}" %></h4></a>
+		<a href="<%= site_homework_path(current_user.site.id, homework.id) %>"><h4><%= homework.subject + " - " + homework.chapter + " - " + "#{l(homework.issue_date)}" %></h4></a>
 		<%= simple_format(sanitize(truncate(homework.content, :length => 150))) %></li></ol></ul>
 		<hr />
-		<%= "Submission Date - #{homework.submission_date}"%>
+		<%= "Submission Date - #{l(homework.submission_date)}"%>
 		<% if @homeworks.last != homework and @homeworks.first != @homeworks.last %><br /><hr id="seperator" /><% end %>
 	<% end %>
 </div>

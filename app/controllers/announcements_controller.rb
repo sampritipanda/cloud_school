@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.where(:site_id => current_user.site.id).page(params[:page]).sort { |a,b| a.created_at <=> b.created_at }
+    @announcements =  Announcement.order(:created_at).where(:site_id => current_user.site.id).page(params[:page]).per(5)
     
     respond_to do |format|
       format.js

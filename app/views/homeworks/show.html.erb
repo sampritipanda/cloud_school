@@ -1,10 +1,10 @@
 <div>
 	<div class="page-header">
-		<h2 class="text-center"><%= @homework.subject + " - " + @homework.chapter + " - " + "#{@homework.issue_date.day}/#{@homework.issue_date.month}/#{@homework.issue_date.year}" %></h2>
+		<h2 class="text-center"><%= @homework.subject + " - " + @homework.chapter + " - " + "#{l(@homework.issue_date)}" %></h2>
 	</div>	
 	<%= simple_format(@homework.content) %>
 	<center><hr /></center>
-	<%= "Submission Date - #{@homework.submission_date}"%>
+	<%= "Submission Date - #{l(@homework.submission_date)}"%>
 	<hr />
 </div>
 
