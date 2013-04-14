@@ -60,7 +60,7 @@ gem 'cancan'
 gem 'paperclip'
 
 # For using Bonsai ElasticSearch
-gem 'tire'
+#gem 'tire'
 
 # To use Kaminari for Pagination
 gem 'kaminari'

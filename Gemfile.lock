@@ -35,7 +35,6 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    ansi (1.4.3)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
@@ -61,7 +60,6 @@ GEM
       multi_json (~> 1.0)
     haml (4.0.0)
       tilt
-    hashr (0.0.22)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -122,8 +120,6 @@ GEM
     rdoc (3.12.1)
       json (~> 1.4)
     ref (1.0.2)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -149,14 +145,6 @@ GEM
       ref
     thor (0.17.0)
     tilt (1.3.3)
-    tire (0.5.7)
-      activemodel (>= 3.0)
-      activesupport
-      ansi
-      hashr (~> 0.0.19)
-      multi_json (~> 1.3)
-      rake
-      rest-client (~> 1.6)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -193,7 +181,6 @@ DEPENDENCIES
   ruby-debug19
   sass-rails (~> 3.2.3)
   therubyracer
-  tire
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
