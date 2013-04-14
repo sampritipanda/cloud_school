@@ -4,11 +4,11 @@ class AnnouncementsController < ApplicationController
   def index
     @announcements =  Announcement.order(:created_at).where(:site_id => current_user.site.id).page(params[:page]).per(5)
     
-    respond_to do |format|
-      format.js
-      format.html # index.html.erb
-      format.xml  { render :xml => @announcements }
-    end
+    #respond_to do |format|
+    #  format.js
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @announcements }
+    #end
   end
 
   # GET /announcements/1
