@@ -1,5 +1,9 @@
 <style>
-	#sidebar-links {
+  #logo {
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+  #sidebar-links {
 		padding-left: 15px;
 	}
 	
@@ -16,6 +20,9 @@
 	}
 </style>
 
+<div id="logo">
+  <a href="<%= site_path(current_user.site.id) %>"><img src="/images/logo.png"></a>
+</div>
 <center><h3 style="color: #663399;"><u><%= current_user.site.name %></u></h3></center>
 
 <div id="sidebar-links">
@@ -36,7 +43,7 @@
 </div>
 
 <div id="sidebar-img">
-	<a href="http://www.saiinternationalschool.com"><img src="/images/logo.gif" /></a>
+	<a href="http://www.saiinternationalschool.com"><img src="/images/sai.gif" /></a>
 </div>
 
 <div id="sidebar-links">

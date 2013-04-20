@@ -1,7 +1,7 @@
 <div id="frame-content"><center>
 	<%= form_for(@classwork, :url => site_classwork_path(current_user.site.id, @classwork.id)) do |f| %>
 	  <fieldset>
-	  	  <legend>Edit Classwork</legend>
+	  	  <div class="page-header"><h3>Edit Classwork</h3></div>
 	  	  
 		  <div><%= f.label :date %>
 		  <%= f.date_select :date, :start_year => 1940 %></div>

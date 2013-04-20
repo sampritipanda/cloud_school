@@ -28,6 +28,14 @@
 			background-color:#A0AA6D;
 		<% end %>
 	}
+	
+	#header {
+		width: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background-color: #000000;
+	}
   </style>
     
 </head>
@@ -53,6 +61,11 @@
 		#top {
 			padding-top: 5px;
 		}
+    
+    #sidebar-border {
+      padding-right: 25px;
+      border-right: solid grey 2px;
+    }
 	</style>
 	
 	<div id="top">
@@ -76,11 +89,11 @@
 	<% else %>
 		<table id="site-content"><tr><td>
 			<div class="row">
-			    <div class="span2">
+			    <div class="span2" id="sidebar-border">
 			    	<%= render "sites/sidebar" %>
 			    </div>
 			    <div class="span7">
-			    	<%= yield %>	
+			    	<%= yield %>
 			    </div>
 		    </div>
 		</td></tr></table>
