@@ -15,4 +15,4 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require bootstrap-wysihtml5
-//= require turbolinks
+// require turbolinks

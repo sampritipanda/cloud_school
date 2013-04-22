@@ -48,7 +48,8 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'devise'
 
 # To use Turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
+#gem 'jquery-turbolinks'
 
 # To use NewRelic
 gem 'newrelic_rpm'
