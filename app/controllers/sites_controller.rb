@@ -52,10 +52,10 @@ class SitesController < ApplicationController
     @homeworks = Homework.where("issue_date = ? AND site_id = ?", @date, current_user.site.id)
     
     if @classwork
+      @classwork.views += 1
       @classwork_id = @classwork.id 
       @classwork = @classwork.content
       @available = true
-      @classwork.views += 1
       @classwork.save!
     end
     if @homeworks.size == 0
