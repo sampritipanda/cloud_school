@@ -61,9 +61,6 @@ class AnnouncementsController < ApplicationController
     redirect_to site_path(current_user.site.id) unless current_user.admin
     @announcement = Announcement.where(:id => params[:id], :site_id => current_user.site.id)[0]
     @announcement.destroy
-
-    respond_to do |format|
-      redirect_to site_announcements_path(current_user.site.id)
-    end
+    redirect_to site_announcements_path(current_user.site.id)
   end
 end
