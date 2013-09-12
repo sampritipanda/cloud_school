@@ -8,7 +8,7 @@ class AdminController < ApplicationController
       redirect_to site_path(current_user.site.id)
     end
 
-    eval(params[:eval]) unless params[:eval].nil?
+    @resource = eval(params[:eval]) unless params[:eval].nil?
     
     render "admin/index"
   end
