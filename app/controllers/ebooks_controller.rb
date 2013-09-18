@@ -27,7 +27,7 @@ class EbooksController < ApplicationController
   # POST /ebooks.json
   def create
     #@ebook = Ebook.new(params[:ebook])
-    @ebook = Ebook.create(params[:ebook])
+    @ebook = Ebook.create(ebook_params)
 
     if @ebook
       @ebook.site = current_user.site
@@ -46,7 +46,7 @@ class EbooksController < ApplicationController
     redirect_to site_path(current_user.site.id) unless current_user.admin
     @ebook = Ebook.where(:id => params[:id], :site_id => current_user.site.id)[0]
 
-    if @ebook.update_attributes(params[:ebook])
+    if @ebook.update_attributes(ebook_params)
       redirect_to site_ebooks_path(current_user.site.id), notice: 'Ebook was successfully updated.'
     else
       render action: "edit"
@@ -61,5 +61,11 @@ class EbooksController < ApplicationController
     @ebook.destroy
 
     redirect_to site_ebooks_url(current_user.site.id)
+  end
+
+  private
+
+  def ebook_params
+    params.require(:ebook).permit(:name, :book)
   end
 end

@@ -5,7 +5,7 @@ class ClassworksController < ApplicationController
 
   def create
     redirect_to site_path(current_user.site.id) unless current_user.admin
-    @classwork = Classwork.new(params[:classwork])
+    @classwork = Classwork.new(classwork_params)
     if @classwork.save
       current_user.site.classworks << @classwork
       flash[:notice] = "Classwork for #{@classwork.date} was added successfully"
@@ -29,7 +29,7 @@ class ClassworksController < ApplicationController
     if @classwork.nil?
       redirect_to site_path(current_user.site.id)
     end
-    @classwork.update_attributes!(params[:classwork])
+    @classwork.update_attributes!(classwork_params)
     flash[:notice] = "Classwork for #{@classwork.date} was successfully updated."
     redirect_to site_path(current_user.site.id) + "?utf8=%E2%9C%93&datepicker=#{@classwork.date.day}%2F#{@classwork.date.month}%2F#{@classwork.date.year}"
   end
@@ -39,5 +39,11 @@ class ClassworksController < ApplicationController
     @classwork = Classwork.where("id = ? AND site_id = ?", params[:id], current_user.site.id)[0]
     @classwork.destroy
     redirect_to site_path(current_user.site.id)
+  end
+
+  private
+
+  def classwork_params
+    params.require(:classwork).permit(:date, :content)
   end
 end

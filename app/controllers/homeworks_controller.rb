@@ -30,7 +30,7 @@ class HomeworksController < ApplicationController
   
   def create
     redirect_to site_path(current_user.site.id) unless current_user.admin
-    @homework = Homework.new(params[:homework])
+    @homework = Homework.new(homework_params)
     if @homework.save
       current_user.site.homeworks << @homework
       flash[:notice] = "Homework for #{@homework.issue_date} was added successfully"
@@ -54,7 +54,7 @@ class HomeworksController < ApplicationController
     if @homework.nil?
       redirect_to site_path(current_user.site.id)
     end
-    @homework.update_attributes!(params[:homework])
+    @homework.update_attributes!(homework_params])
     flash[:notice] = "Homework for #{@homework.issue_date} was successfully updated."
     redirect_to site_homework_path(current_user.site.id, @homework.id)
   end
@@ -66,5 +66,11 @@ class HomeworksController < ApplicationController
     return unless params[:query].present?
     
     @homeworks = Homework.search(params[:query], :load => true)
+  end
+
+  private
+
+  def homework_params
+    params.require(:homework).permit(:subject, :chapter, :issue_date, :submission_date, :content, :views)
   end
 end

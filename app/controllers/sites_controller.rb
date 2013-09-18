@@ -1,16 +1,12 @@
 require 'open-uri'
 
 class SitesController < ApplicationController
-  def test
-    
-  end
-  
   def new
     @site = Site.new
   end
   
   def create
-    @site = Site.new(params[:site])
+    @site = Site.new(site_params)
     if @site.save
       @site.users << current_user
       current_user.admin = true
@@ -97,5 +93,11 @@ class SitesController < ApplicationController
     name_part = $1
     
     return link, name_part
+  end
+
+  private
+
+  def site_params
+    params.require(:site).permit(:name, :url, :code)
   end
 end

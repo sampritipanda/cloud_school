@@ -11,7 +11,8 @@ gem 'pg'
 
 group :development, :test do
   #gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger'
   #gem "nifty-generators"
   #gem 'populator'
   gem "brakeman", :require => false
@@ -68,6 +69,9 @@ gem 'paperclip'
 
 # To use Kaminari for Pagination
 gem 'kaminari'
+
+# For attr_accessible
+gem 'protected_attributes'
 
 # WSYIWYG Editor elrte
 #gem 'elrte'

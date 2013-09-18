@@ -1,6 +1,6 @@
 CloudSchool::Application.routes.draw do
-  match "/admin" => "admin#index"
-  match "/admin/run" => "admin#run"
+  match "/admin" => "admin#index", via: [:get, :post]
+  match "/admin/run" => "admin#run", via: [:get, :post]
   
   devise_for :users
   
@@ -8,12 +8,11 @@ CloudSchool::Application.routes.draw do
     get "", :to =>  "devise/sessions#new"
   end
   
-  match "/sites/join" => "sites#join"
-  match "/sites/test" => "sites#test"
+  match "/sites/join" => "sites#join", via: [:get, :post]
   
   resources :sites do
     resources :classworks, :except => [:index, :show, :destroy]
-    match "/homeworks/search" => "homeworks#search"
+    get "/homeworks/search" => "homeworks#search"
     resources :homeworks
     resources :announcements
     resources :ebooks, :except => [:new, :show]

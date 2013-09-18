@@ -32,7 +32,7 @@ class AnnouncementsController < ApplicationController
   # POST /announcements.json
   def create
     redirect_to site_path(current_user.site.id) unless current_user.admin
-    @announcement = Announcement.create(params[:announcement])
+    @announcement = Announcement.create(announcement_params)
     if @announcement
       @announcement.site_id = current_user.site.id
       @announcement.save!
@@ -48,7 +48,7 @@ class AnnouncementsController < ApplicationController
     redirect_to site_path(current_user.site.id) unless current_user.admin
     @announcement = Announcement.where(:id => params[:id], :site_id => current_user.site.id)[0]
 
-    if @announcement.update_attributes(params[:announcement])
+    if @announcement.update_attributes(announcement_params)
       redirect_to site_announcement_path(current_user.site.id, @announcement.id), notice: 'Announcement was successfully updated.'
     else
       render action: "edit"
@@ -62,5 +62,11 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.where(:id => params[:id], :site_id => current_user.site.id)[0]
     @announcement.destroy
     redirect_to site_announcements_path(current_user.site.id)
+  end
+
+  private
+
+  def announcement_params
+    params.require(:announcement).permit(:content, :title)
   end
 end
