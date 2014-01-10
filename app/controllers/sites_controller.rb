@@ -88,7 +88,7 @@ class SitesController < ApplicationController
     source =~ link_regexp
     link = 'http://bing.com' + $1
     
-    name_regexp = /<\/div><\/div><span><p>(.+) \(&#169;.+<\/p>/
+    name_regexp = /class="sc_light" id="sh_cp" title="(.+) \(.+\)" h="ID=/
     source =~ name_regexp
     name_part = $1
     

@@ -60,7 +60,7 @@ gem 'devise'
 gem 'newrelic_rpm'
 
 # To use CanCan Authorization
-gem 'cancan'
+#gem 'cancan'
 
 # To use PaperClip for File Uploads
 gem 'paperclip'
@@ -72,7 +72,7 @@ gem 'paperclip'
 gem 'kaminari'
 
 # For attr_accessible
-gem 'protected_attributes'
+#gem 'protected_attributes'
 
 # WSYIWYG Editor elrte
 #gem 'elrte'

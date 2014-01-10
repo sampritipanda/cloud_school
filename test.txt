@@ -1,3 +1,0 @@
-Site has_many User.
-User belongs_to Site
-User has site_id

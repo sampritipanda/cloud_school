@@ -9,9 +9,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :name, :birthday
-  attr_protected :sampriti
-  # attr_accessible :title, :body
+  #attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :name, :birthday
+  #attr_protected :super_admin
   
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }

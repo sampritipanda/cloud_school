@@ -54,7 +54,7 @@ class HomeworksController < ApplicationController
     if @homework.nil?
       redirect_to site_path(current_user.site.id)
     end
-    @homework.update_attributes!(homework_params])
+    @homework.update_attributes!(homework_params)
     flash[:notice] = "Homework for #{@homework.issue_date} was successfully updated."
     redirect_to site_homework_path(current_user.site.id, @homework.id)
   end
