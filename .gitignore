@@ -16,3 +16,6 @@
 
 # Ignore all the pdfs uploaded for testing
 *.pdf
+
+# Rubymine Files
+/.idea

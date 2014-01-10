@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '~> 4.0.0'
+gem 'rails', '~> 4.0.2'
 gem 'haml'
 gem 'pg'
 
@@ -31,9 +31,10 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'font-awesome-less'
   
   gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
                                    :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
